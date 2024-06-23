@@ -35,6 +35,12 @@
     };
   };
 
+  # Carapace provides command argument completion
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
   # Direnv manages and loads variables from env files when changing directory
   programs.direnv = {
     enable = true;
