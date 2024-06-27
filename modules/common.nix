@@ -16,6 +16,9 @@
     nixpkgs-fmt
     nix-prefetch
     nix-prefetch-git
+
+    # HTML/CSS/JSON/ESLint language servers extracted from vscode
+    vscode-langservers-extracted
   ];
 
   # Import CLI tool configs
