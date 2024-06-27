@@ -72,6 +72,10 @@
           auto-format = true;
           indent = { tab-width = 4; unit = "    "; };
         }
+        {
+          name = "sql";
+          language-servers = [ "sqls" ];
+        }
       ];
 
       # Language server specific configs
@@ -85,7 +89,21 @@
         rust-analyzer = {
           config = { checkOnSave.command = "clippy"; };
         };
+        sqls = {
+          command = "sqls";
+        };
       };
+    };
+  };
+
+  programs.sqls = {
+    enable = true;
+    settings = {
+      lowercaseKeywords = true;
+      connections = [{
+        driver = "postgresql";
+        dataSourceName = "host=127.0.0.1 port=5432 user=postgres dbname=postgres sslmode=disable";
+      }];
     };
   };
 }
