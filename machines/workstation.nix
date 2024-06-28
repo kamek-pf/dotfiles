@@ -2,8 +2,18 @@
 { pkgs, config, ... }:
 let tools = import ../tools.nix;
 in {
-  # Explicitly disable PulseAudio, PipeWire is enabled below
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    # Explicitly disable PulseAudio, PipeWire is enabled below
+    pulseaudio.enable = false;
+    # Scanner support
+    sane = {
+      enable = true;
+      brscan4 = {
+        enable = true;
+        netDevices.home = { model = "MFC-9330CDW"; ip = "192.168.0.200"; };
+      };
+    };
+  };
 
   services = {
     # Sound support
@@ -23,6 +33,14 @@ in {
         enable = true;
         wayland = true;
       };
+    };
+
+    # Printer support
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
     };
   };
 

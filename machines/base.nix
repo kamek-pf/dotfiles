@@ -33,7 +33,7 @@
   users.users.kamek = {
     isNormalUser = true;
     shell = pkgs.nushell;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "scanner" "lp" ];
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
