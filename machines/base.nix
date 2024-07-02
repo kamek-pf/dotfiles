@@ -73,6 +73,7 @@
     helix
     git
     fd
+    zip
     ripgrep
     dua
     usbutils
