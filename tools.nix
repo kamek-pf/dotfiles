@@ -7,4 +7,21 @@
       owner = "kamek";
     };
   };
+
+  # Define NixOS machines
+  nixosMachine = system: nixpkgs: agenix: hm: user: hostName: {
+    ${hostName} = nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules = [
+        ./machines/${hostName}/configuration.nix
+        agenix.nixosModules.default
+        hm.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${user} = import ./machines/${hostName}/home.nix;
+        }
+      ];
+    };
+  };
 }

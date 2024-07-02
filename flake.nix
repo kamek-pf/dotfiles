@@ -20,22 +20,9 @@
       system = "x86_64-linux";
       user = "kamek";
       pkgs = import nixpkgs { inherit system; };
-      # Define NixOS machines
-      nixosMachine = hostName: {
-        ${hostName} = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./machines/${hostName}/configuration.nix
-            agenix.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${user} = import ./machines/${hostName}/home.nix;
-            }
-          ];
-        };
-      };
+      tools = import ./tools.nix;
+      # Pass a hostname to define new NixOS machines
+      nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager user;
     in
     {
       devShells.${system}.default = pkgs.mkShell {
