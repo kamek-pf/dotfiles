@@ -6,6 +6,7 @@
   imports = [
     ../../modules/common.nix
     ../../modules/gui.nix
+    ../../modules/river.nix
     ../../modules/hyprland.nix
     ../../modules/music.nix
   ];
