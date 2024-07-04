@@ -60,7 +60,6 @@ in {
   environment.systemPackages = with pkgs; [
     firefox
     chromium
-    noisetorch
     discord
     jetbrains.datagrip
     mpv

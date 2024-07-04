@@ -257,7 +257,10 @@ in
       ];
 
       # Allow tearing for some games
-      windowrulev2 = "immediate, class:^(steam_app_1172470)$";
+      windowrulev2 = [
+        "immediate, class:^(gamescope)$" # Games running through Gamescope
+        "immediate, class:^(steam_app_1172470)$" # Apex
+      ];
     };
   };
 }
