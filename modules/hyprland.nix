@@ -1,6 +1,6 @@
 # This is a home-manager module. On NixOS you'll need to
 # the hyprland-wm.nix module as well.
-{ pkgs, osConfig, ... }:
+{ osConfig, ... }:
 let
   host = osConfig.networking.hostName;
   cfg.antharas = {
@@ -54,39 +54,7 @@ let
   };
 in
 {
-  home.packages = with pkgs; [
-    # Screenshot stuff
-    grim # capture screenshot
-    slurp # select zone on screen
-    swappy # quick editing tool
-
-    # Clipboard tools
-    cliphist # clipboard manager
-    wl-clipboard # clipboard interactions
-  ];
-
-  imports = [
-    ./dunst.nix
-    ./waybar.nix
-  ];
-
-  programs.wofi = {
-    enable = true;
-    style = builtins.readFile ./wofi.css;
-    settings = {
-      height = 600;
-      width = 800;
-    };
-  };
-
-  home.pointerCursor = {
-    name = "Adwaita";
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.gnome.adwaita-icon-theme;
-    size = 24;
-  };
-
+  imports = [ ./wayland.nix ];
   services.hyprpaper = {
     enable = true;
     settings =

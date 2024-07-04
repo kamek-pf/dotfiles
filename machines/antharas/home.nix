@@ -6,6 +6,7 @@
     ../../modules/common.nix
     ../../modules/gui.nix
     ../../modules/hyprland.nix
+    # ../../modules/river.nix
     ../../modules/music.nix
   ];
 }

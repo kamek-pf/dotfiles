@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup-qt
+    mesa-demos
     vulkan-tools # allows testing with vkcube
   ];
 }
