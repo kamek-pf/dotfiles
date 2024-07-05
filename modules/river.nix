@@ -36,7 +36,6 @@
       enable = true;
       settings = {
         default-layout = "rivertile";
-        focus-follows-cursor = "normal";
         spawn = [ "rivertile" "waybar" "kanshi" ];
         map.normal = {
           # Window navigation
