@@ -9,6 +9,10 @@
     # Clipboard tools
     cliphist # clipboard manager
     wl-clipboard # clipboard interactions
+
+    # Wayland monitor tools
+    kanshi
+    wlr-randr
   ];
 
   imports = [

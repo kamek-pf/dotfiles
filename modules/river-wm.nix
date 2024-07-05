@@ -4,10 +4,8 @@
   programs.river.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kanshi
-    nwg-displays
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
   ];
 }

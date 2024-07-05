@@ -5,12 +5,12 @@
 
   services.kanshi = {
     enable = true;
-    settings = [
+    settings.profile = [
       {
         output = {
           status = "enable";
           criteria = "DP-1";
-          scale = 2.0;
+          scale = 1.5;
           mode = "3840x2160@60Hz";
         };
       }
@@ -18,7 +18,7 @@
         output = {
           status = "enable";
           criteria = "DP-2";
-          scale = 2.0;
+          scale = 1.5;
           mode = "3840x2160@60Hz";
           position = "0,-460";
         };
