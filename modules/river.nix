@@ -5,25 +5,21 @@
 
   services.kanshi = {
     enable = true;
-    settings.profile = [
-      {
-        output = {
+    settings =
+      let
+        desktopMonitor = criteria: {
+          inherit criteria;
           status = "enable";
-          criteria = "DP-1";
           scale = 1.5;
           mode = "3840x2160@60Hz";
         };
-      }
-      {
-        output = {
-          status = "enable";
-          criteria = "DP-2";
-          scale = 1.5;
-          mode = "3840x2160@60Hz";
-          position = "0,-460";
-        };
-      }
-    ];
+      in
+      [{
+        profile.outputs = [
+          (desktopMonitor "DP-1")
+          (desktopMonitor "DP-2" // { position = "-1440,450"; })
+        ];
+      }];
   };
 
   wayland.windowManager.river =
@@ -35,7 +31,7 @@
       enable = true;
       settings = {
         default-layout = "rivertile";
-        spawn = [ "rivertile" "waybar" ];
+        spawn = [ "rivertile" "waybar" "kanshi" ];
         map.normal = {
           ${mod "up"} = "focus-view up";
           ${mod "down"} = "focus-view down";

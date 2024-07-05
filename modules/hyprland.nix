@@ -130,10 +130,6 @@ in
         preserve_split = true;
       };
 
-      master = {
-        new_is_master = true;
-      };
-
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;

@@ -33,7 +33,7 @@
     name = "Adwaita";
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.gnome.adwaita-icon-theme;
+    package = pkgs.adwaita-icon-theme;
     size = 24;
   };
 }
