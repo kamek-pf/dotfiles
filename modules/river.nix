@@ -29,7 +29,7 @@
     let
       mod = key: "Mod4 " + key; # Super + key
       modCtrl = key: "Mod4+Control " + key; # Super + Control + key
-      modShift = key: "Mod4+Shift " + key; # Super + Control + key
+      modShift = key: "Super+Shift " + key; # Super + Shift + key
       spawn = cmd: "spawn '${cmd}'";
     in
     {
@@ -66,14 +66,15 @@
           ${modShift "5"} = "set-view-tags 16";
           ${modShift "6"} = "set-view-tags 32";
           # Change layout
-          ${modShift "up"} = "send-layout-cmd rivertile 'main-location-top'";
-          ${modShift "down"} = "send-layout-cmd rivertile 'main-location-left'";
+          ${modShift "up"} = "send-layout-cmd rivertile 'main-location top'";
+          ${modShift "down"} = "send-layout-cmd rivertile 'main-location left'";
           # Monitor focus
           ${modCtrl "left"} = "focus-output left";
           ${modCtrl "right"} = "focus-output right";
           # Launch apps
           ${mod "return"} = spawn "alacritty";
           ${mod "space"} = spawn "wofi --show drun --insensitive";
+          ${mod "c"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | wl-copy";
           # Misc
           "Control+Alt escape" = "exit";
         };
