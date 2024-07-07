@@ -5,6 +5,7 @@ let
   leftMonitorX = "-1440";
   leftMonitorY = "-450";
   leftMonitorPos = "${leftMonitorX},${leftMonitorY}";
+  desktopMouse = "pointer-1133-49738-Logitech_Gaming_Mouse_G600";
 in
 {
   imports = [ ./wayland.nix ];
@@ -46,6 +47,10 @@ in
       settings = {
         default-layout = "rivertile";
         spawn = [ "rivertile" "waybar" "kanshi" ];
+        input.${desktopMouse} = {
+          "accel-profile" = "none";
+          "pointer-accel" = "0";
+        };
         map.normal = {
           # Window navigation
           ${mod "up"} = "focus-view up";
@@ -81,7 +86,7 @@ in
           ${modCtrl "right"} = "focus-output right";
           # Switch to game mode / regular mode
           ${modAlt "left"} = spawn "${monitorPos} -5000,${leftMonitorY}; ${cursorWarp} on-output-change";
-          ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} default";
+          ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} disabled";
           # Launch apps
           ${mod "return"} = spawn "alacritty";
           ${mod "space"} = spawn "wofi --show drun --insensitive";
