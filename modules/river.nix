@@ -1,6 +1,12 @@
 # This is a NixOS module. To import River configurations with
 # home-manager, you'll need the river.nix module as well.
-{ ... }: {
+{ ... }:
+let
+  leftMonitorX = "-1440";
+  leftMonitorY = "-450";
+  leftMonitorPos = "${leftMonitorX},${leftMonitorY}";
+in
+{
   imports = [ ./wayland.nix ];
 
   services.kanshi = {
@@ -18,7 +24,7 @@
         profile.outputs = [
           (desktopMonitor "DP-1")
           (desktopMonitor "DP-2" // {
-            position = "-1440,-450";
+            position = leftMonitorPos;
             transform = "90";
           })
         ];
@@ -30,7 +36,10 @@
       mod = key: "Mod4 " + key; # Super + key
       modCtrl = key: "Mod4+Control " + key; # Super + Control + key
       modShift = key: "Super+Shift " + key; # Super + Shift + key
+      modAlt = key: "Super+Alt " + key; # Super + Alt + key
       spawn = cmd: "spawn '${cmd}'";
+      monitorPos = "wlr-randr --output DP-2 --pos";
+      cursorWarp = "riverctl set-cursor-warp";
     in
     {
       enable = true;
@@ -70,6 +79,9 @@
           # Monitor focus
           ${modCtrl "left"} = "focus-output left";
           ${modCtrl "right"} = "focus-output right";
+          # Switch to game mode / regular mode
+          ${modAlt "left"} = spawn "${monitorPos} -5000,${leftMonitorY}; ${cursorWarp} on-output-change";
+          ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} default";
           # Launch apps
           ${mod "return"} = spawn "alacritty";
           ${mod "space"} = spawn "wofi --show drun --insensitive";
