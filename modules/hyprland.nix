@@ -98,6 +98,8 @@ in
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
 
+      cursor.no_warps = true;
+
       env = cfg.${host}.hyprland.env ++ [
         "QT_QPA_PLATFORMTHEME,qt6ct"
         "WLR_DRM_NO_ATOMIC,1"
@@ -170,6 +172,7 @@ in
         "$mainMod ALT, ESCAPE, exit,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, T, togglefloating,"
+        "$mainMod, A, fullscreen"
         "$mainMod, S, togglesplit, # dwindle"
 
         # Move focus with mainMod + arrow keys
