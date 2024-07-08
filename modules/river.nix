@@ -61,9 +61,8 @@ in
           ${mod "z"} = "zoom";
           ${mod "x"} = "toggle-float";
           ${mod "a"} = "toggle-fullscreen";
-          # Move view to monitor
-          ${modShift "left"} = "send-to-output left";
-          ${modShift "right"} = "send-to-output right";
+          ${mod "kp_subtract"} = "swap previous";
+          ${mod "kp_add"} = "swap next";
           # Tags / workspaces
           ${mod "1"} = "set-focused-tags 1";
           ${mod "2"} = "set-focused-tags 2";
@@ -78,6 +77,9 @@ in
           ${modShift "4"} = "set-view-tags 8";
           ${modShift "5"} = "set-view-tags 16";
           ${modShift "6"} = "set-view-tags 32";
+          # Move view to monitor
+          ${modShift "left"} = "send-to-output left";
+          ${modShift "right"} = "send-to-output right";
           # Change layout
           ${modShift "up"} = "send-layout-cmd rivertile 'main-location top'";
           ${modShift "down"} = "send-layout-cmd rivertile 'main-location left'";
