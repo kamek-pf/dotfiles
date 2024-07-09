@@ -8,8 +8,6 @@ let
   desktopMouse = "pointer-1133-49738-Logitech_Gaming_Mouse_G600";
 in
 {
-  imports = [ ./wayland.nix ];
-
   services.kanshi = {
     enable = true;
     settings =

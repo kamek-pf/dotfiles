@@ -1,5 +1,15 @@
-# This is a home-manager module for Wayland based window managers.
-{ pkgs, ... }: {
+# This is a home-manager module. It controls which window manager config should be included.
+{ pkgs, ... }:
+let
+  wm = (import ../settings.nix).windowManager;
+  wmConfig =
+    if wm.isRiver then
+      [ ./river.nix ]
+    else if wm.isHyprland then
+      [ ./hyprland.nix ]
+    else [ ];
+in
+{
   home.packages = with pkgs; [
     # Screenshot stuff
     grim # capture screenshot
@@ -15,7 +25,7 @@
     wlr-randr
   ];
 
-  imports = [
+  imports = wmConfig ++ [
     ./dunst.nix
     ./waybar.nix
   ];

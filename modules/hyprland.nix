@@ -54,7 +54,6 @@ let
   };
 in
 {
-  imports = [ ./wayland.nix ];
   services.hyprpaper = {
     enable = true;
     settings =

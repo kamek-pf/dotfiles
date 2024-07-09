@@ -8,8 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../workstation.nix
-    ../../modules/river-wm.nix
-    ../../modules/hyprland-wm.nix
+    ../../modules/window-manager-nixos.nix
   ];
 }
 
