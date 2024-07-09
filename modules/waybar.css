@@ -47,6 +47,16 @@ button:hover {
   background-color: #eb4d4b;
 }
 
+#tags button {
+  padding: 0 8px;
+  color: #dfbf8e;
+}
+
+#tags button.focused {
+  background-color: transparent;
+  box-shadow: inset 0 -2px #dfbf8e;
+}
+
 #mode {
   background-color: #64727D;
   border-bottom: 3px solid #ffffff;
