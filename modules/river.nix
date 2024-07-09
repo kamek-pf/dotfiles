@@ -32,8 +32,8 @@ in
 
   wayland.windowManager.river =
     let
-      mod = key: "Mod4 " + key; # Super + key
-      modCtrl = key: "Mod4+Control " + key; # Super + Control + key
+      mod = key: "Super " + key; # Super + key
+      modCtrl = key: "Super+Control " + key; # Super + Control + key
       modShift = key: "Super+Shift " + key; # Super + Shift + key
       modAlt = key: "Super+Alt " + key; # Super + Alt + key
       spawn = cmd: "spawn '${cmd}'";
@@ -44,6 +44,7 @@ in
       enable = true;
       settings = {
         default-layout = "rivertile";
+        keyboard-layout = "-options 'compose:ralt' us";
         spawn = [ "rivertile" "waybar" "kanshi" "'swaybg -m fill -i ~/Dev/dotfiles/wallpapers/sea.jpg'" ];
         input.${desktopMouse} = {
           "accel-profile" = "none";
@@ -91,6 +92,8 @@ in
           ${mod "return"} = spawn "alacritty";
           ${mod "space"} = spawn "wofi --show drun --insensitive";
           ${mod "c"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | wl-copy";
+          ${mod "print"} = spawn "grim -g \"$(slurp -d)\" - | wl-copy";
+          ${modCtrl "print"} = spawn "grim -g \"$(slurp -d)\" - | swappy -f - -o - | wl-copy";
           # Misc
           "Control+Alt escape" = "exit";
         };
