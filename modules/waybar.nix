@@ -6,6 +6,10 @@ let
     layer = "top";
     height = 35;
     spacing = 8;
+    "river/tags" = {
+      num-tags = 5;
+      set-tags = [ 1 2 4 8 16 32 ];
+    };
     "hyprland/workspaces" = {
       format = "{icon}";
       on-click = "activate";
@@ -111,6 +115,7 @@ let
       output = "DP-1";
       modules-left = [
         "hyprland/workspaces"
+        "river/tags"
         "mpd"
       ];
       modules-center = [
@@ -129,6 +134,7 @@ let
       output = "DP-2";
       modules-left = [
         "hyprland/workspaces"
+        "river/tags"
       ];
       modules-center = [
         "clock"
