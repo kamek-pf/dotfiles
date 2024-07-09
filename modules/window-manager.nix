@@ -22,6 +22,7 @@ in
 
     # Wayland monitor tools
     kanshi
+    swaybg
     wlr-randr
   ];
 

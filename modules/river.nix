@@ -44,7 +44,7 @@ in
       enable = true;
       settings = {
         default-layout = "rivertile";
-        spawn = [ "rivertile" "waybar" "kanshi" ];
+        spawn = [ "rivertile" "waybar" "kanshi" "swaybg -m fill -i ~/Dev/dotfiles/wallpapers/sea.jpg" ];
         input.${desktopMouse} = {
           "accel-profile" = "none";
           "pointer-accel" = "0";
