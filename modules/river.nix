@@ -37,6 +37,7 @@ in
       modShift = key: "Super+Shift " + key; # Super + Shift + key
       modAlt = key: "Super+Alt " + key; # Super + Alt + key
       spawn = cmd: "spawn '${cmd}'";
+      exec = cmd: "'${cmd}'";
       monitorPos = "wlr-randr --output DP-2 --pos";
       cursorWarp = "riverctl set-cursor-warp";
     in
@@ -45,7 +46,13 @@ in
       settings = {
         default-layout = "rivertile";
         keyboard-layout = "-options 'compose:ralt' us";
-        spawn = [ "rivertile" "waybar" "kanshi" "'swaybg -m fill -i ~/Dev/dotfiles/wallpapers/sea.jpg'" ];
+        spawn = map exec [
+          "rivertile"
+          "waybar"
+          "kanshi"
+          "swaybg -m fill -i ~/Dev/dotfiles/wallpapers/sea.jpg"
+          "wl-paste --type text --watch cliphist store"
+        ];
         input.${desktopMouse} = {
           "accel-profile" = "none";
           "pointer-accel" = "0";
