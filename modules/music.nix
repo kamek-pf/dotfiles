@@ -3,6 +3,7 @@
   services.mpd = {
     enable = true;
     musicDirectory = "/mnt/media/music";
+    playlistDirectory = "/mnt/media/music/playlists";
     extraConfig = ''
       playlist_plugin {
           name "m3u"
