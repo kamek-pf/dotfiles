@@ -1,6 +1,14 @@
 { osConfig, ... }:
 let
   host = osConfig.networking.hostName;
+  wm = (import ../settings.nix).windowManager;
+  workspaceModule =
+    if wm.isRiver then
+      [ "river/tags" ]
+    else if wm.isHyprland then
+      [ "hyprland/workspace" ]
+    else
+      [ ];
 
   config = {
     layer = "top";
@@ -113,11 +121,7 @@ let
     };
     settings.mainMonitor = config // {
       output = "DP-1";
-      modules-left = [
-        "hyprland/workspaces"
-        "river/tags"
-        "mpd"
-      ];
+      modules-left = workspaceModule ++ [ "mpd" ];
       modules-center = [
         "clock"
       ];
@@ -132,10 +136,7 @@ let
     };
     settings.secondaryMonitor = config // {
       output = "DP-2";
-      modules-left = [
-        "hyprland/workspaces"
-        "river/tags"
-      ];
+      modules-left = workspaceModule;
       modules-center = [
         "clock"
       ];
@@ -157,17 +158,13 @@ let
     };
     settings.mainMonitor = config // {
       output = "eDP-1";
-      modules-left = [
-        "hyprland/workspaces"
-        "mpd"
-      ];
+      modules-left = workspaceModule ++ [ "mpd" ];
       modules-center = [
         "clock"
       ];
       modules-right = [
         "network"
         "pulseaudio"
-        "custom/github"
         "backlight"
         "cpu"
         "memory"

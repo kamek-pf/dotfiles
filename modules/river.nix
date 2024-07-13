@@ -1,16 +1,15 @@
 # This is a NixOS module. To import River configurations with
 # home-manager, you'll need the river.nix module as well.
-{ ... }:
+{ osConfig, ... }:
 let
+  host = osConfig.networking.hostName;
   leftMonitorX = "-1440";
   leftMonitorY = "-450";
   leftMonitorPos = "${leftMonitorX},${leftMonitorY}";
-  desktopMouse = "pointer-1133-49738-Logitech_Gaming_Mouse_G600";
-in
-{
-  services.kanshi = {
-    enable = true;
-    settings =
+  hostMouse = cfg.${host}.mouse;
+  cfg.antharas = {
+    mouse = "pointer-1133-49738-Logitech_Gaming_Mouse_G600";
+    kanshiSettings =
       let
         desktopMonitor = criteria: {
           inherit criteria;
@@ -28,6 +27,23 @@ in
           })
         ];
       }];
+  };
+  cfg.zaken = {
+    mouse = "pointer-1739-0-Synaptics_TM3289-021";
+    kanshiSettings = [{
+      profile.outputs = [{
+        criteria = "eDP-1";
+        status = "enable";
+        scale = 1.25;
+        mode = "2560x1440@60Hz";
+      }];
+    }];
+  };
+in
+{
+  services.kanshi = {
+    enable = true;
+    settings = cfg.${host}.kanshiSettings;
   };
 
   wayland.windowManager.river =
@@ -53,7 +69,7 @@ in
           "swaybg -m fill -i ~/Dev/dotfiles/wallpapers/sea.jpg"
           "wl-paste --type text --watch cliphist store"
         ];
-        input.${desktopMouse} = {
+        input.${hostMouse} = {
           "accel-profile" = "none";
           "pointer-accel" = "0";
         };

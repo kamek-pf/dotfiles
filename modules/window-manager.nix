@@ -7,7 +7,8 @@ let
       [ ./river.nix ]
     else if wm.isHyprland then
       [ ./hyprland.nix ]
-    else [ ];
+    else
+      [ ];
 in
 {
   home.packages = with pkgs; [
