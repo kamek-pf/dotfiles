@@ -1,4 +1,5 @@
-# This module includes shell scripts that should be globally accessible.# Derivations should be included in package lists.
+# This module includes shell scripts that should be globally accessible.
+# Derivations should be included in package lists.
 { pkgs, ... }: {
   twitch =
     let
