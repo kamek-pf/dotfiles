@@ -1,7 +1,10 @@
 # Settings I want on a regular workstation.
-{ pkgs, config, ... }:
-let tools = import ../tools.nix;
-in {
+input@{ pkgs, config, ... }:
+let
+  tools = import ../tools.nix;
+  scripts = import ../scripts.nix input;
+in
+{
   hardware = {
     # Explicitly disable PulseAudio, PipeWire is enabled below
     pulseaudio.enable = false;
@@ -64,8 +67,9 @@ in {
     jetbrains.datagrip
     mpv
     mpc-cli
-    streamlink
     pavucontrol
+    streamlink
+    scripts.twitch
   ];
 
   fonts.packages = with pkgs; [
