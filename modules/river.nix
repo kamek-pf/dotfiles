@@ -36,6 +36,12 @@ let
         ${modAlt "left"} = spawn "${monitorPos} -5000,${leftMonitorY}; ${cursorWarp} on-output-change";
         ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} disabled";
       };
+      riverExtra = ''
+        riverctl focus-output left
+        riverctl send-layout-cmd rivertile 'main-location top';
+        riverctl send-layout-cmd rivertile 'main-ratio 0.678'
+        riverctl focus-output right
+      '';
       kanshiSettings = [{
         profile.outputs = [
           (desktopMonitor "DP-1")
@@ -50,6 +56,7 @@ let
   cfg.zaken = {
     mouse = "pointer-1739-0-Synaptics_TM3289-021";
     bindings = { };
+    riverExtra = "";
     kanshiSettings = [{
       profile.outputs = [{
         criteria = "eDP-1";
@@ -68,8 +75,10 @@ in
 
   wayland.windowManager.river = {
     enable = true;
+    extraConfig = cfg.${host}.riverExtra;
     settings = {
       default-layout = "rivertile";
+      default-attach-mode = "bottom";
       keyboard-layout = "-options 'compose:ralt' us";
       spawn = map exec [
         "rivertile"
