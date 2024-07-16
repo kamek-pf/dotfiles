@@ -99,7 +99,6 @@ in
         ${mod "right"} = "focus-view right";
         ${mod "w"} = "close";
         ${mod "z"} = "zoom";
-        ${mod "x"} = "toggle-float";
         ${mod "a"} = "toggle-fullscreen";
         ${mod "kp_subtract"} = "swap previous";
         ${mod "kp_add"} = "swap next";
@@ -130,6 +129,7 @@ in
         ${mod "return"} = spawn "alacritty";
         ${mod "space"} = spawn "wofi --show drun --insensitive";
         ${mod "c"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | wl-copy";
+        ${mod "x"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | bash";
         ${mod "print"} = spawn "grim -g \"$(slurp -d)\" - | wl-copy";
         ${modCtrl "print"} = spawn "grim -g \"$(slurp -d)\" - | swappy -f - -o - | wl-copy";
         # Misc
