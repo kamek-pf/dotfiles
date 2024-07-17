@@ -69,7 +69,10 @@ in
     mpc-cli
     pavucontrol
     streamlink
+    libnotify
     scripts.twitch
+    scripts.record-start
+    scripts.record-stop
   ];
 
   fonts.packages = with pkgs; [

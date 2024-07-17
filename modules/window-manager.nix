@@ -12,10 +12,11 @@ let
 in
 {
   home.packages = with pkgs; [
-    # Screenshot stuff
+    # Screenshot and capture stuff
     grim # capture screenshot
     slurp # select zone on screen
     swappy # quick editing tool
+    wf-recorder # screen recorder
 
     # Clipboard tools
     cliphist # clipboard manager

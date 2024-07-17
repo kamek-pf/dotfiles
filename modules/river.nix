@@ -132,6 +132,8 @@ in
         ${mod "x"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | bash";
         ${mod "print"} = spawn "grim -g \"$(slurp -d)\" - | wl-copy";
         ${modCtrl "print"} = spawn "grim -g \"$(slurp -d)\" - | swappy -f - -o - | wl-copy";
+        ${modAlt "print"} = spawn "record-start";
+        ${modShift "print"} = spawn "record-stop";
         # Misc
         "Control+Alt escape" = "exit";
       };
