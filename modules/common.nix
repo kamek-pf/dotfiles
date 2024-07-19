@@ -10,6 +10,7 @@
     tokei # Lines of code reporter
     hexyl # Hex viewer
     gitleaks # Check a repository for secrets
+    termshark # network analysis and packet capture
 
     # Nix language server, code formatter and tools
     nil
