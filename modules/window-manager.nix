@@ -31,6 +31,7 @@ in
   imports = wmConfig ++ [
     ./dunst.nix
     ./waybar.nix
+    ./swaylock.nix
   ];
 
   programs.wofi = {

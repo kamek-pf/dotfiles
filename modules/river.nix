@@ -100,6 +100,7 @@ in
         ${mod "w"} = "close";
         ${mod "z"} = "zoom";
         ${mod "a"} = "toggle-fullscreen";
+        ${mod "v"} = "toggle-float";
         ${mod "kp_subtract"} = "swap previous";
         ${mod "kp_add"} = "swap next";
         # Tags / workspaces
@@ -125,7 +126,8 @@ in
         # Monitor focus
         ${modCtrl "left"} = "focus-output left";
         ${modCtrl "right"} = "focus-output right";
-        # Launch apps
+        # Launch apps and tools
+        ${mod "l"} = spawn "swaylock";
         ${mod "return"} = spawn "alacritty";
         ${mod "space"} = spawn "wofi --show drun --insensitive";
         ${mod "c"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | wl-copy";

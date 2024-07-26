@@ -69,6 +69,7 @@ in
     mpc-cli
     pavucontrol
     streamlink
+    gimp
     libnotify
     scripts.twitch
     scripts.record-start
