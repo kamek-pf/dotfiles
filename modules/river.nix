@@ -33,8 +33,8 @@ let
       mouse = "pointer-1133-49738-Logitech_Gaming_Mouse_G600";
       bindings = {
         # Switch to game mode / regular mode
-        ${modAlt "left"} = spawn "${monitorPos} -5000,${leftMonitorY}; ${cursorWarp} on-output-change";
-        ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} disabled";
+        ${modAlt "left"} = spawn "${monitorPos} -5000,${leftMonitorY}; ${cursorWarp} on-output-change; dunstctl set-paused true";
+        ${modAlt "right"} = spawn "${monitorPos} ${leftMonitorPos}; ${cursorWarp} disabled; dunstctl set-paused false";
       };
       riverExtra = ''
         riverctl focus-output left
