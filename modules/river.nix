@@ -127,7 +127,7 @@ in
         ${modCtrl "left"} = "focus-output left";
         ${modCtrl "right"} = "focus-output right";
         # Launch apps and tools
-        ${mod "l"} = spawn "swaylock";
+        ${mod "l"} = spawn "swaylock -f";
         ${mod "return"} = spawn "alacritty";
         ${mod "space"} = spawn "wofi --show drun --insensitive";
         ${mod "c"} = spawn "cliphist list | wofi --show dmenu --insensitive | cliphist decode | wl-copy";

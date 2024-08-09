@@ -1,5 +1,8 @@
 # Random helper functions
-{
+{ pkgs, ... }: {
+  # Execute a command by referencing its Nix path and set arguments
+  cmd = bin: args: "${pkgs.${bin}}/bin/${bin} ${args}";
+
   # Reference a user secret that agenix will decrypt using the host key
   userSecret = fileName: {
     "${fileName}" = {

@@ -29,9 +29,14 @@ in
   ];
 
   imports = wmConfig ++ [
+    # Desktop notifications
     ./dunst.nix
+    # Top bar
     ./waybar.nix
+    # Screen locker
     ./swaylock.nix
+    # Trigger commands on idle
+    ./swayidle.nix
   ];
 
   programs.wofi = {

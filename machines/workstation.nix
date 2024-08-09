@@ -1,7 +1,7 @@
 # Settings I want on a regular workstation.
 input@{ pkgs, config, ... }:
 let
-  tools = import ../tools.nix;
+  tools = import ../tools.nix input;
   scripts = import ../scripts.nix input;
 in
 {
