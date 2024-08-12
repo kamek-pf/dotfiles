@@ -66,6 +66,7 @@
         {
           name = "rust";
           auto-format = true;
+          formatter = { command = "rustfmt"; };
         }
         {
           name = "json";
