@@ -66,7 +66,6 @@
         {
           name = "rust";
           auto-format = true;
-          formatter = { command = "rustfmt"; };
         }
         {
           name = "json";
@@ -88,7 +87,7 @@
           };
         };
         rust-analyzer = {
-          config = { checkOnSave.command = "clippy"; };
+          config = { checkOnSave.command = "clippy"; formatOnSave = true; };
         };
         sqls = {
           command = "sqls";
