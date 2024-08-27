@@ -20,6 +20,9 @@
 
     # HTML/CSS/JSON/ESLint language servers extracted from vscode
     vscode-langservers-extracted
+
+    # TOML language server
+    taplo
   ];
 
   # Import CLI tool configs
