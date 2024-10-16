@@ -70,6 +70,7 @@ in
     pavucontrol
     streamlink
     gimp
+    evince
     libnotify
     scripts.twitch
     scripts.record-start

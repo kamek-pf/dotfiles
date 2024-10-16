@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     openssh
     awscli2
+    unzip
     jq # JSON CLI tool
     bat # Alternative to cat
     tokei # Lines of code reporter

@@ -78,6 +78,7 @@
     dua
     usbutils
     pciutils
+    docker-compose
   ];
 
   # Show diff on update
