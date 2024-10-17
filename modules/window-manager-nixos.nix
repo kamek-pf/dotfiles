@@ -3,18 +3,23 @@
 { pkgs, ... }:
 let
   wm = (import ../settings.nix).windowManager;
-  desktopPortal = with pkgs; if wm.isRiver then
-    [ xdg-desktop-portal-wlr ]
-  else if wm.isHyprland then
-    [ xdg-desktop-portal-hyprland ]
-  else [ ];
 in
 {
   programs.river.enable = wm.isRiver;
   programs.hyprland.enable = wm.isHyprland;
 
-  environment.systemPackages = with pkgs; desktopPortal ++ [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-  ];
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = "wlr";
+      };
+    };
+    wlr.enable = wm.isRiver;
+    wlr.settings.screencast = {
+      output_name = "DP-1";
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+    };
+  };
 }

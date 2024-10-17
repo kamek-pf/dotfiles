@@ -48,6 +48,7 @@ in
   };
 
   programs = {
+    dconf.enable = true;
     openvpn3.enable = true;
   };
 
