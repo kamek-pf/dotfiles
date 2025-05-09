@@ -9,7 +9,7 @@ in
 {
   programs.alacritty = {
     enable = true;
-    settings.shell.program = "nu";
+    settings.terminal.shell.program = "nu";
 
     settings.font = {
       size = 11.5;
