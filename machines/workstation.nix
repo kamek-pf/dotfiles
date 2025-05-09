@@ -76,6 +76,7 @@ in
     scripts.twitch
     scripts.record-start
     scripts.record-stop
+    zed-editor
   ];
 
   fonts.packages = with pkgs; [
