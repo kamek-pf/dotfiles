@@ -11,7 +11,7 @@ in
 
   programs.k9s = {
     enable = true;
-    hotkey.hotKeys = {
+    hotKeys = {
       showNodes = {
         shortCut = "Shift-1";
         description = "Show nodes";

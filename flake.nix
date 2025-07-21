@@ -23,20 +23,30 @@
       tools = import ./tools.nix { inherit pkgs; };
       # Pass a hostname to define new NixOS machines
       nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager user;
+      # Pass a username and state version to define Home Manager configs
+      linuxMachine = tools.homeManagerConfig home-manager;
+
     in
     {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = with pkgs; [
+          tools.mainCli
           pkgs.home-manager # Still need pkgs here to avoid ambiguous name
           agenix.packages.${system}.default
           age
           ripgrep
-          just
+          nix
+          nil
+          nixpkgs-fmt
         ];
       };
 
+      # NixOS machines
       nixosConfigurations =
         nixosMachine "antharas" //
         nixosMachine "zaken";
+
+      # Linux / WSL machines
+      homeConfigurations = linuxMachine "devcontainers" "25.11";
     };
 }

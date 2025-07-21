@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  home.username = "kamek";
-  home.homeDirectory = "/home/kamek";
-
   home.packages = with pkgs; [
     openssh
     awscli2
@@ -13,17 +10,16 @@
     gitleaks # Check a repository for secrets
     termshark # network analysis and packet capture
 
-    # Nix language server, code formatter and tools
-    nil
+    # Nix tools
     nixpkgs-fmt
     nix-prefetch
     nix-prefetch-git
 
-    # HTML/CSS/JSON/ESLint language servers extracted from vscode
-    vscode-langservers-extracted
-
-    # TOML language server
-    taplo
+    # Language servers
+    nil # Nix
+    taplo # TOML
+    harper # Grammar checker
+    vscode-langservers-extracted # HTML/CSS/JSON/ESLint
   ];
 
   # Import CLI tool configs

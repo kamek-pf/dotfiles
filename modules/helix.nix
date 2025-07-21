@@ -51,49 +51,65 @@
     };
 
     # Language settings
-    languages = {
-      language = [
-        {
-          name = "haskell";
-          auto-format = true;
-          indent = { tab-width = 4; unit = "    "; };
-        }
-        {
-          name = "nix";
-          auto-format = true;
-          formatter = { command = "nixpkgs-fmt"; };
-        }
-        {
-          name = "rust";
-          auto-format = true;
-        }
-        {
-          name = "json";
-          auto-format = true;
-          indent = { tab-width = 4; unit = "    "; };
-        }
-        {
-          name = "sql";
-          language-servers = [ "sqls" ];
-        }
-      ];
+    languages =
+      let common = base: base ++ [ "harper-ls" ];
+      in {
+        language = [
+          {
+            name = "haskell";
+            auto-format = true;
+            indent = { tab-width = 4; unit = "    "; };
+            language-servers = common [ "hls" ];
+          }
+          {
+            name = "nix";
+            auto-format = true;
+            formatter = { command = "nixpkgs-fmt"; };
+            language-servers = common [ "nil" ];
+          }
+          {
+            name = "rust";
+            auto-format = true;
+            language-servers = common [ "rust-analyzer" ];
+          }
+          {
+            name = "json";
+            auto-format = true;
+            indent = { tab-width = 4; unit = "    "; };
+          }
+          {
+            name = "sql";
+            language-servers = common [ "sqls" ];
+          }
+          {
+            name = "toml";
+            language-servers = common [ "taplo" ];
+          }
+        ];
 
-      # Language server specific configs
-      language-server = {
-        haskell-language-server = {
-          config.haskell = {
-            formattingProvider = "fourmolu";
-            plugin.stan = { globalOn = false; };
+        # Language server specific configs
+        language-server = {
+          haskell-language-server = {
+            config.haskell = {
+              formattingProvider = "fourmolu";
+              plugin.stan = { globalOn = false; };
+            };
+          };
+          rust-analyzer = {
+            config = {
+              checkOnSave.command = "clippy";
+              formatOnSave = true;
+            };
+          };
+          sqls = {
+            command = "sqls";
+          };
+          harper-ls = {
+            command = "harper-ls";
+            args = [ "--stdio" ];
           };
         };
-        rust-analyzer = {
-          config = { checkOnSave.command = "clippy"; formatOnSave = true; };
-        };
-        sqls = {
-          command = "sqls";
-        };
       };
-    };
   };
 
   programs.sqls = {
