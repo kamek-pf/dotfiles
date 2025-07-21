@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  home.username = "kamek";
-  home.homeDirectory = "/home/kamek";
-
   home.packages = with pkgs; [
     openssh
     awscli2
