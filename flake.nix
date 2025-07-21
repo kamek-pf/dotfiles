@@ -23,10 +23,15 @@
       tools = import ./tools.nix { inherit pkgs; };
       # Pass a hostname to define new NixOS machines
       nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager user;
+      cmd = with pkgs; writeShellScriptBin "cmd" ''
+        ${nushell}/bin/nu ./scripts/cmd "$@"
+      '';
+
     in
     {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = with pkgs; [
+          cmd
           pkgs.home-manager # Still need pkgs here to avoid ambiguous name
           agenix.packages.${system}.default
           age

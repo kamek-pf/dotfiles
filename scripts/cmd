@@ -1,0 +1,41 @@
+#!/usr/bin/env nu
+
+# List available commands
+def main []: nothing -> nothing  {
+  nu $env.CURRENT_FILE --help 
+}
+
+# Login on services that require it
+def "main login" []: nothing -> nothing {
+	sudo tailscale login
+	atuin login
+}
+
+# Generate configuration files (NixOS)
+def "main rebuild" []: nothing -> nothing {
+	sudo nixos-rebuild switch --flake .
+}
+
+# NixOS update: update flake and rebuild
+def "main update" []: nothing -> nothing {
+	nix flake update
+	main rebuild
+}
+	
+# Cleanup old generations, only retain the last 3 days
+def "main cleanup" []: nothing -> nothing {	
+	sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 3d
+	sudo nix store gc
+}
+		
+# Only needed once per non-NixOS machine, symlinks configs where needed
+def "main init-home-manager" []: nothing -> nothing {
+	mkdir $env.HOME/.config/home-manager
+	unlink $env.HOME/.config/home-manager/flake.nix
+	ln -s $env.PWD/flake.nix $env.HOME/.config/home-manager	
+}
+
+# Generate configuration files (Home Manager)
+def "main rebuild-home-manager" []: nothing -> nothing {	
+	home-manager switch -b backup
+}
