@@ -38,6 +38,8 @@
           nix
           nil
           nixpkgs-fmt
+          nushell
+          helix
         ];
       };
 
@@ -47,6 +49,6 @@
         nixosMachine "zaken";
 
       # Linux / WSL machines
-      homeConfigurations = linuxMachine "devcontainers" "25.11";
+      homeConfigurations = linuxMachine "kamek_havenstudios" "25.11";
     };
 }
