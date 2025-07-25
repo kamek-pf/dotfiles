@@ -85,6 +85,10 @@
             name = "toml";
             language-servers = common [ "taplo" ];
           }
+          {
+            name = "markdown";
+            language-servers = common [ "marksman" ];
+          }
         ];
 
         # Language server specific configs

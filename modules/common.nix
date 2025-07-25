@@ -20,6 +20,7 @@
     nil # Nix
     taplo # TOML
     harper # Grammar checker
+    marksman # Markdown
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
   ];
 
