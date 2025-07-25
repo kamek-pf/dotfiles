@@ -898,6 +898,6 @@ alias sd = hx
 alias grep = rg
 alias top = btop
 alias cat = bat --theme=base16
-alias ll = ls -a
+alias ll = ls -la
 alias kk = k9s
 

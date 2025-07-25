@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     openssh
     awscli2
+    google-cloud-sdk
     unzip
     jq # JSON CLI tool
     bat # Alternative to cat
