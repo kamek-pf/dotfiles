@@ -16,6 +16,7 @@ def "main rebuild" []: nothing -> nothing {
 	if (sys host | get long_os_version) =~ "(?i)NixOS" {		
 		sudo nixos-rebuild switch --flake .
 	} else {
+		init_home_manager
 		home-manager switch -b backup
 	}
 }
@@ -31,9 +32,9 @@ def "main cleanup" []: nothing -> nothing {
 	sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 3d
 	sudo nix store gc
 }
-		
-# Only needed once per non-NixOS machine, symlinks configs where needed
-def "main init-home-manager" []: nothing -> nothing {
+
+# Symlink the flake for home manager
+def init_home_manager [] {
 	let local_hm = $env.HOME | path join ".config/home-manager"
 	let local_flake = $local_hm | path join "flake.nix"
 	let repo_flake = $env.PWD | path join "flake.nix"
