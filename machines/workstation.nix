@@ -6,8 +6,6 @@ let
 in
 {
   hardware = {
-    # Explicitly disable PulseAudio, PipeWire is enabled below
-    pulseaudio.enable = false;
     # Scanner support
     sane = {
       enable = true;
@@ -19,6 +17,9 @@ in
   };
 
   services = {
+    # Explicitly disable PulseAudio, PipeWire is enabled below
+    pulseaudio.enable = false;
+
     # Sound support
     pipewire = {
       enable = true;
@@ -27,15 +28,17 @@ in
       pulse.enable = true;
     };
 
-    # Login manager and basic desktop environment
+    # X11 settings
     xserver = {
       enable = true;
       xkb.layout = "us";
-      desktopManager.gnome.enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
+    };
+
+    # Login manager and basic desktop environment
+    desktopManager.gnome.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
 
     # Printer support
