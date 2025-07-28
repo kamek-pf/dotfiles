@@ -34,18 +34,29 @@
   };
 
   # Define standalone HomeManager configurations, for non-NixOS machines
-  homeManagerConfig = hm: username: stateVersion: {
-    ${username} = hm.lib.homeManagerConfiguration {
-      inherit pkgs;
+  homeManagerConfig = hm: stateVersion: machineSettings:
+    let
+      # Merge settings
+      defaultSettings = import ./settings.nix;
+      settings = pkgs.lib.recursiveUpdate defaultSettings machineSettings;
+      # Define Home Manager module
+      homeModule = {
+        inherit stateVersion;
+        username = settings.username;
+        homeDirectory = "/home/${settings.username}";
+      };
+      # Define list of modules
       modules = [
+        { home = homeModule; }
         ./modules/common.nix
-        {
-          home = {
-            inherit stateVersion username;
-            homeDirectory = "/home/${username}";
-          };
-        }
       ];
+    in
+    {
+      ${settings.username} = hm.lib.homeManagerConfiguration {
+        inherit pkgs modules;
+        extraSpecialArgs = {
+          inherit settings;
+        };
+      };
     };
-  };
 }

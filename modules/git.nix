@@ -1,8 +1,8 @@
-{ ... }: {
+{ settings, ... }: {
   programs.git = {
     enable = true;
-    userEmail = "b.kamek@gmail.com";
-    userName = "Kamek";
+    userEmail = settings.git.email;
+    userName = settings.git.username;
     extraConfig = {
       # Create new branches upstream automatically
       push.autoSetupRemote = true;

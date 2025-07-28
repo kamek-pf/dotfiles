@@ -1,4 +1,11 @@
+# Default settings. Machines can override any subset of this record.
 {
+  # Machine username
+  username = "kamek";
+  git = {
+    username = "kamek-pf";
+    email = "b.kamek@gmail.com";
+  };
   windowManager = rec {
     available = {
       river = "river";
