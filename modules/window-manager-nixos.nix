@@ -1,10 +1,8 @@
 # This is a NixOS module. It controls which window manager should be enabled
 # at the OS level and what dependencies should be included.
-{ pkgs, ... }:
-let
-  wm = (import ../settings.nix).windowManager;
-in
-{
+{ pkgs, settings, ... }:
+let wm = settings.windowManager;
+in {
   programs.river.enable = wm.isRiver;
   programs.hyprland.enable = wm.isHyprland;
 

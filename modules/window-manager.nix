@@ -1,7 +1,7 @@
 # This is a home-manager module. It controls which window manager config should be included.
-{ pkgs, ... }:
+{ pkgs, settings, ... }:
 let
-  wm = (import ../settings.nix).windowManager;
+  wm = settings.windowManager;
   wmConfig =
     if wm.isRiver then
       [ ./river.nix ]

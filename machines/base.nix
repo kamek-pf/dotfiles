@@ -1,11 +1,11 @@
 # Base settings that apply to all machines, including headless servers.
-{ pkgs, ... }: {
+{ pkgs, settings, ... }: {
   # Keep the bootloader clean
   boot.loader.systemd-boot.configurationLimit = 5;
 
   nix = {
     settings = {
-      trusted-users = [ "root" "kamek" ];
+      trusted-users = [ "root" settings.username ];
       experimental-features = [ "nix-command" "flakes" ];
     };
 
@@ -30,7 +30,7 @@
     firewall.enable = true;
   };
 
-  users.users.kamek = {
+  users.users.${settings.username} = {
     isNormalUser = true;
     shell = pkgs.nushell;
     extraGroups = [ "wheel" "networkmanager" "video" "scanner" "lp" ];

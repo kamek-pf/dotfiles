@@ -1,7 +1,7 @@
-{ osConfig, ... }:
+{ osConfig, settings, ... }:
 let
   host = osConfig.networking.hostName;
-  wm = (import ../settings.nix).windowManager;
+  wm = settings.windowManager;
   workspaceModule =
     if wm.isRiver then
       [ "river/tags" ]

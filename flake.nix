@@ -18,11 +18,10 @@
   outputs = { nixpkgs, home-manager, agenix, ... }:
     let
       system = "x86_64-linux";
-      user = "kamek";
       pkgs = import nixpkgs { inherit system; };
       tools = import ./tools.nix { inherit pkgs; };
       # Pass a hostname to define new NixOS machines
-      nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager user;
+      nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager { };
       # Pass a state version and settings record to define Home Manager configs
       linuxMachine = tools.homeManagerConfig home-manager;
 
