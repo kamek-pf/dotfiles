@@ -28,5 +28,6 @@ in
   ];
 
   # Create Aider config file
+  # this seems wrong, it should generate yaml, AI!
   home.file.".aider.conf.yml".text = builtins.toJSON aiderConfig;
 }
