@@ -22,7 +22,7 @@ let
     thinking-tokens = "32k";
 
     # Color tweaks
-    code-theme = "monokai";
+    code-theme = "zenburn";
     user-input-color = colors.normal.green;
     tool-output-color = colors.normal.blue;
     tool-error-color = colors.normal.red;
