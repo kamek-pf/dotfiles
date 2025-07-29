@@ -5,6 +5,7 @@
     google-cloud-sdk
     unzip
     jq # JSON CLI tool
+    fd # Alternative to find
     bat # Alternative to cat
     tokei # Lines of code reporter
     hexyl # Hex viewer
