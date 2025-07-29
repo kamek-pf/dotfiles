@@ -10,11 +10,14 @@ let
     dark-mode: true
     model: claude-3-5-sonnet-20241022
 
-    # Color scheme matching varua theme - using darker colors
-    # explain what these do AI?
-    user-input-color: "${colors.varua.foreground}"
-    tool-output-color: "${colors.varua.foreground}"
-    tool-error-color: "${colors.varua.foreground}"
+    # Color scheme matching varua theme - using distinct colors for different output types
+    # user-input-color: Sets the color for text you type/input when chatting with Aider
+    # tool-output-color: Sets the color for output from tools that Aider runs (like git commands, file operations, etc.)
+    # tool-error-color: Sets the color for error messages from tools when something goes wrong
+    # assistant-output-color: Sets the color for Aider's AI responses and messages
+    user-input-color: "${colors.varua.normal.green}"
+    tool-output-color: "${colors.varua.normal.cyan}"
+    tool-error-color: "${colors.varua.normal.red}"
     assistant-output-color: "${colors.varua.foreground}"
 
     # Additional styling
