@@ -21,7 +21,7 @@ let
     assistant-output-color: "${colors.nord.foreground}"
 
     # Additional styling
-    code-theme: zenburn
+    code-theme: nord
 
     # Uncomment and set your OpenAI API key path if needed
     # openai-api-key-file: ~/.config/aider/openai-key
