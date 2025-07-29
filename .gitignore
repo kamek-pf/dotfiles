@@ -2,3 +2,4 @@ st3-user/Package Control.cache
 st3-user/Package Control.last-run
 .direnv
 .env
+.aider*

@@ -32,5 +32,6 @@
     ./helix.nix
     ./shell.nix
     ./kubernetes.nix
+    ./aider.nix
   ];
 }
