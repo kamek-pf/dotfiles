@@ -11,10 +11,11 @@ let
     model: claude-3-5-sonnet-20241022
 
     # Color scheme matching varua theme - using darker colors
-    user-input-color: "${colors.varua.bright.red}"
-    tool-output-color: "${colors.varua.normal.red}"
-    tool-error-color: "${colors.varua.normal.red}"
-    assistant-output-color: "${colors.varua.normal.red}"
+    # explain what these do AI?
+    user-input-color: "${colors.varua.foreground}"
+    tool-output-color: "${colors.varua.foreground}"
+    tool-error-color: "${colors.varua.foreground}"
+    assistant-output-color: "${colors.varua.foreground}"
 
     # Additional styling
     code-theme: zenburn
