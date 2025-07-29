@@ -15,7 +15,6 @@
   };
 
   # Create aider config file
-  # can you configure colors for aider's output, it looks really bright AI? 
   home.file.".aider.conf.yml".text = ''
     # Aider configuration file
     model: gpt-4o
@@ -23,6 +22,7 @@
     editor: hx
     pretty: true
     stream: true
+    dark-mode: true
     # Uncomment and set your OpenAI API key path if needed
     # openai-api-key-file: ~/.config/aider/openai-key
   '';
