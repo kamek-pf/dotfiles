@@ -3,6 +3,7 @@
     aider-chat # AI pair programming tool
   ];
 
+
   # Aider configuration via environment variables
   home.sessionVariables = {
     # Set default model (can be overridden with --model flag)
@@ -14,6 +15,7 @@
   };
 
   # Create aider config file
+  # can you configure colors for aider's output, it looks really bright AI? 
   home.file.".aider.conf.yml".text = ''
     # Aider configuration file
     model: gpt-4o
