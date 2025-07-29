@@ -21,7 +21,7 @@
     taplo # TOML
     harper # Grammar checker
     marksman # Markdown
-    # add nodejs AI!
+    nodejs # JavaScript runtime for language servers and tools
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
   ];
 
