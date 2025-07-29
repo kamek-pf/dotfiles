@@ -21,7 +21,7 @@
     editor: hx
     pretty: true
     stream: true
-    # dark-mode: true
+    dark-mode: true
     # Uncomment and set your OpenAI API key path if needed
     # openai-api-key-file: ~/.config/aider/openai-key
   '';
