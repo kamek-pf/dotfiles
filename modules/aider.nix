@@ -5,7 +5,7 @@ let
   aiderConfigYaml = ''
     auto-commits: true
     editor: hx
-    pretty: true
+    pretty: false
     stream: true
     dark-mode: true
     model: claude-3-5-sonnet-20241022
