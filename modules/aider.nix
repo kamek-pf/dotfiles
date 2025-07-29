@@ -10,15 +10,15 @@ let
     dark-mode: true
     model: claude-3-5-sonnet-20241022
 
-    # Color scheme matching varua theme - using distinct colors for different output types
+    # Color scheme matching nord theme - using distinct colors for different output types
     # user-input-color: Sets the color for text you type/input when chatting with Aider
     # tool-output-color: Sets the color for output from tools that Aider runs (like git commands, file operations, etc.)
     # tool-error-color: Sets the color for error messages from tools when something goes wrong
     # assistant-output-color: Sets the color for Aider's AI responses and messages
-    user-input-color: "${colors.varua.normal.green}"
-    tool-output-color: "${colors.varua.normal.cyan}"
-    tool-error-color: "${colors.varua.normal.red}"
-    assistant-output-color: "${colors.varua.foreground}"
+    user-input-color: "${colors.nord.normal.green}"
+    tool-output-color: "${colors.nord.normal.cyan}"
+    tool-error-color: "${colors.nord.normal.red}"
+    assistant-output-color: "${colors.nord.foreground}"
 
     # Additional styling
     code-theme: zenburn
