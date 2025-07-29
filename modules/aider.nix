@@ -9,11 +9,11 @@ let
     stream = true;
     dark-mode = true;
 
-    # Color scheme matching varua theme
-    user-input-color = colors.varua.normal.blue;
-    tool-output-color = colors.varua.normal.green;
+    # Color scheme matching varua theme - using darker colors
+    user-input-color = colors.varua.bright.black;
+    tool-output-color = colors.varua.normal.black;
     tool-error-color = colors.varua.normal.red;
-    assistant-output-color = colors.varua.foreground;
+    assistant-output-color = colors.varua.normal.black;
 
     # Additional styling
     code-theme = "monokai";
@@ -28,5 +28,5 @@ in
   ];
 
   # Create Aider config file
-  # home.file.".aider.conf.yml".text = builtins.toJSON aiderConfig;
+  home.file.".aider.conf.yml".text = builtins.toJSON aiderConfig;
 }
