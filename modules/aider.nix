@@ -11,13 +11,13 @@ let
     model: claude-3-5-sonnet-20241022
 
     # Color scheme matching varua theme - using darker colors
-    user-input-color: "${colors.varua.bright.black}"
-    tool-output-color: "${colors.varua.normal.black}"
+    user-input-color: "${colors.varua.bright.red}"
+    tool-output-color: "${colors.varua.normal.red}"
     tool-error-color: "${colors.varua.normal.red}"
-    assistant-output-color: "${colors.varua.normal.black}"
+    assistant-output-color: "${colors.varua.normal.red}"
 
     # Additional styling
-    code-theme: monokai
+    code-theme: zenburn
 
     # Uncomment and set your OpenAI API key path if needed
     # openai-api-key-file: ~/.config/aider/openai-key
