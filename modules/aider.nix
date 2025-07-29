@@ -8,6 +8,7 @@ let
     pretty: true
     stream: true
     dark-mode: true
+    model: claude-3-5-sonnet-20241022
 
     # Color scheme matching varua theme - using darker colors
     user-input-color: "${colors.varua.bright.black}"
