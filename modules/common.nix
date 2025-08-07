@@ -4,6 +4,7 @@
     awscli2
     google-cloud-sdk
     unzip
+    ripgrep # Faster grep
     jq # JSON CLI tool
     fd # Alternative to find
     bat # Alternative to cat
@@ -13,6 +14,7 @@
     termshark # network analysis and packet capture
 
     # Nix tools
+    nix
     nixpkgs-fmt
     nix-prefetch
     nix-prefetch-git

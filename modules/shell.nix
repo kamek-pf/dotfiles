@@ -1,9 +1,10 @@
-{ ... }: {
+{ settings, ... }: {
   # The actual shell
   programs.nushell = {
     enable = true;
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
+    environmentVariables = settings.env;
   };
 
   # Starship implements a fast, configurable prompt

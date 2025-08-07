@@ -52,7 +52,8 @@ in {
   homeManagerConfig = hm: stateVersion: machineSettings:
     let
       # Merge settings
-      settings = pkgs.lib.recursiveUpdate defaultSettings machineSettings;
+      hmSettings = machineSettings // { isNixOS = false; };
+      settings = pkgs.lib.recursiveUpdate defaultSettings hmSettings;
       # Define Home Manager module
       homeModule = {
         inherit stateVersion;

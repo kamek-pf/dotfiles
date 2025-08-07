@@ -62,9 +62,7 @@
   };
 
   # Global environment variables  
-  environment.sessionVariables = {
-    EDITOR = "hx";
-  };
+  environment.sessionVariables = settings.env;
 
   # Global packages
   nixpkgs.config.allowUnfree = true;
