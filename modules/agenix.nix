@@ -1,10 +1,10 @@
 { settings, ... }:
 let
-  # Read secrets from the source record
+  # Read secrets names from the source record
   # This turns `{"something.age": ...}` into `["something"]`
   secretsFile = import ../secrets/secrets.nix;
   readName = name: builtins.substring 0 (builtins.stringLength name - 4) name;
-  secretNames = builtins.map readName (builtins.attrNames secretsFile);
+  secretNames = map readName (builtins.attrNames secretsFile);
 
   # Build the record expected bye agenix
   # This generates `{"something".file: ../secrets/something.age;}` 
