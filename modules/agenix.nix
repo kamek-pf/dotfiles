@@ -1,5 +1,10 @@
 { settings, ... }:
 let
+  secretsFile = import ../secrets/secrets.nix;
+  secretNames = builtins.map 
+    (name: builtins.substring 0 (builtins.stringLength name - 4) name)
+    (builtins.attrNames secretsFile);
+    
   makeSecrets = builtins.foldl' doMerge { };
   doMerge = acc: fileName: acc // {
     "${fileName}".file = ../secrets/${fileName}.age;
@@ -8,11 +13,6 @@ in
 {
   age = {
     identityPaths = [ "/home/${settings.username}/.ssh/id_ed25519" ];
-    # I like this, but I'd like to get those values from the secrets.nix file AI!
-    secrets = makeSecrets [
-      "anthropic-key"
-      "aws-config"
-      "openvpn-infillion.ovpn"
-    ];
+    secrets = makeSecrets secretNames;
   };
 }
