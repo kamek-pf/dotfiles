@@ -1,7 +1,6 @@
 # Settings I want on a regular workstation.
-input@{ pkgs, config, settings, ... }:
+input@{ pkgs, settings, ... }:
 let
-  tools = import ../tools.nix input;
   scripts = import ../scripts.nix input;
 in
 {
@@ -58,8 +57,6 @@ in
   # Global environment variables and paths to decrypted secrets  
   environment.sessionVariables = settings.env // {
     NIXOS_OZONE_WL = "1";
-    AWS_CONFIG_FILE = config.age.secrets.aws-config.path;
-    INFILLION_OVPN = config.age.secrets."openvpn-infillion.ovpn".path;
   };
 
   # Packages that are not in home manager or don't require configuration
@@ -86,11 +83,6 @@ in
     jetbrains-mono
     font-awesome
   ];
-
-  age.secrets = with tools;
-    userSecret "openvpn-infillion.ovpn" //
-    userSecret "aws-config" //
-    userSecret "anthropic-key";
 
   imports = [
     ./base.nix

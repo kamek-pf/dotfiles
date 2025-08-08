@@ -10,15 +10,6 @@ in {
     ${nushell}/bin/nu ./scripts/cmd "$@"
   '';
 
-  # Reference a user secret that agenix will decrypt using the host key
-  userSecret = fileName: {
-    "${fileName}" = {
-      file = secrets/${fileName}.age;
-      path = "/run/secrets/${fileName}";
-      owner = defaultSettings.username;
-    };
-  };
-
   # Define NixOS machines
   nixosMachine = system: nixpkgs: agenix: hm: machineSettings: hostName:
     let
@@ -26,11 +17,12 @@ in {
       settings = pkgs.lib.recursiveUpdate defaultSettings machineSettings;
       user = settings.username;
       # Define Home Manager module settings
-      homeManagerSettings = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.${user} = import ./machines/${hostName}/home.nix { inherit user; };
-        home-manager.extraSpecialArgs = { inherit settings; };
+      homeManagerSettings.home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users.${user} = import ./machines/${hostName}/home.nix { inherit user; };
+        extraSpecialArgs = { inherit settings; };
+        sharedModules = [ agenix.homeManagerModules.default ];
       };
       # Define list of modules
       modules = [
@@ -50,7 +42,7 @@ in {
     };
 
   # Define standalone HomeManager configurations, for non-NixOS machines
-  homeManagerConfig = hm: stateVersion: machineSettings:
+  homeManagerConfig = hm: agenix: stateVersion: machineSettings:
     let
       # Merge settings
       hmSettings = machineSettings // { isNixOS = false; };
@@ -64,6 +56,7 @@ in {
       # Define list of modules
       modules = [
         { home = homeModule; }
+        agenix.homeManagerModules.default
         ./modules/common.nix
       ];
     in

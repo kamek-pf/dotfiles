@@ -1,10 +1,16 @@
-{ settings, ... }: {
+{ settings, config, ... }: {
   # The actual shell
   programs.nushell = {
     enable = true;
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
-    environmentVariables = settings.env;
+    environmentVariables =
+      if settings.isNixOS then
+        settings.env // {
+          AWS_CONFIG_FILE = config.age.secrets.aws-config.path;
+        }
+      else
+        settings.env;
   };
 
   # Starship implements a fast, configurable prompt

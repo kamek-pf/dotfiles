@@ -11,7 +11,8 @@
     tokei # Lines of code reporter
     hexyl # Hex viewer
     gitleaks # Check a repository for secrets
-    termshark # network analysis and packet capture
+    termshark # Network analysis and packet capture
+    # claude-code # Agentic coding tool by Anthropic
 
     # Nix tools
     nix
@@ -29,6 +30,7 @@
 
   # Import CLI tool configs
   imports = [
+    ./agenix.nix
     ./ssh.nix
     ./btop.nix
     ./git.nix
