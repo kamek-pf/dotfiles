@@ -9,7 +9,7 @@
       experimental-features = [ "nix-command" "flakes" ];
     };
 
-    # Optimise store to remove duplicates
+    # Optimize store to remove duplicates
     optimise = {
       automatic = true;
       dates = [ "17:15" ];

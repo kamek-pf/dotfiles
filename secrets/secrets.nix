@@ -1,4 +1,4 @@
-# Remember to reference the age file in base.nix
+# Remember to reference the age file in workstation.nix
 let
   # Host keys
   system = {
@@ -22,4 +22,5 @@ in
 {
   "openvpn-infillion.ovpn.age".publicKeys = workstations;
   "aws-config.age".publicKeys = workstations;
+  "anthropic-key.age".publicKeys = workstations;
 }

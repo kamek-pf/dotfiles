@@ -1,5 +1,5 @@
 # Settings I want on a regular workstation.
-input@{ pkgs, config, ... }:
+input@{ pkgs, config, settings, ... }:
 let
   tools = import ../tools.nix input;
   scripts = import ../scripts.nix input;
@@ -56,8 +56,7 @@ in
   };
 
   # Global environment variables and paths to decrypted secrets  
-  environment.sessionVariables = {
-    VISUAL = "hx";
+  environment.sessionVariables = settings.env // {
     NIXOS_OZONE_WL = "1";
     AWS_CONFIG_FILE = config.age.secrets.aws-config.path;
     INFILLION_OVPN = config.age.secrets."openvpn-infillion.ovpn".path;
@@ -90,7 +89,8 @@ in
 
   age.secrets = with tools;
     userSecret "openvpn-infillion.ovpn" //
-    userSecret "aws-config";
+    userSecret "aws-config" //
+    userSecret "anthropic-key";
 
   imports = [
     ./base.nix

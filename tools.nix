@@ -14,6 +14,7 @@ in {
   userSecret = fileName: {
     "${fileName}" = {
       file = secrets/${fileName}.age;
+      path = "/run/secrets/${fileName}";
       owner = defaultSettings.username;
     };
   };

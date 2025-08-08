@@ -7,6 +7,7 @@
   # Global environment variables
   env = {
     EDITOR = "hx";
+    VISUAL = "hx";
   };
 
   # Git settings
