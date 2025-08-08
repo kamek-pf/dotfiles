@@ -1,10 +1,18 @@
-{ settings, ... }: {
+{ settings, ... }:
+let
+  makeSecrets = builtins.foldl' doMerge { };
+  doMerge = acc: fileName: acc // {
+    "${fileName}".file = ../secrets/${fileName}.age;
+  };
+in
+{
   age = {
     identityPaths = [ "/home/${settings.username}/.ssh/id_ed25519" ];
-    secrets = {
-      anthropic-key.file = ../secrets/anthropic-key.age;
-      aws-config.file = ../secrets/aws-config.age;
-      "openvpn-infillion.ovpn.age".file = ../secrets/openvpn-infillion.ovpn.age;
-    };
+    # I like this, but I'd like to get those values from the secrets.nix file AI!
+    secrets = makeSecrets [
+      "anthropic-key"
+      "aws-config"
+      "openvpn-infillion.ovpn"
+    ];
   };
 }
