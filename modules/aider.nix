@@ -1,18 +1,14 @@
-{ pkgs, settings, ... }:
+{ pkgs, config, settings, ... }:
 let
   colors = (import ./colors.nix).varua;
   basePath = "/home/${settings.username}/.config/aider";
   configFile = "${basePath}/config.yaml";
-  anthropicKey = "anthropic-key";
-  ageAnthropicKey = "/run/secrets/${anthropicKey}";
-  localAnthropicKey = "${basePath}/${anthropicKey}";
+  anthropicKey = config.age.secrets.anthropic-key.path;
 
   # Create a wrapper for `aider` that passes arguments and API keys
   aiderWrapper = pkgs.writeShellScriptBin "aider" ''
-    if [ -f ${localAnthropicKey} ]; then
-      export ANTHROPIC_API_KEY=$(cat ${localAnthropicKey})
-    elif [ -f ${ageAnthropicKey} ]; then
-      export ANTHROPIC_API_KEY=$(cat ${ageAnthropicKey})
+    if [ -f ${anthropicKey} ]; then
+      export ANTHROPIC_API_KEY=$(cat ${anthropicKey})
     fi
     
     exec ${pkgs.aider-chat-with-playwright}/bin/aider --config ${configFile} "$@"

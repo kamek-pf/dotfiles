@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, settings, ... }: {
   home.packages = with pkgs; [
     openssh
     awscli2
@@ -11,7 +11,8 @@
     tokei # Lines of code reporter
     hexyl # Hex viewer
     gitleaks # Check a repository for secrets
-    termshark # network analysis and packet capture
+    termshark # Network analysis and packet capture
+    # claude-code # Agentic coding tool by Anthropic
 
     # Nix tools
     nix
@@ -26,6 +27,15 @@
     marksman # Markdown
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
   ];
+
+  age = {
+    identityPaths = [ "/home/${settings.username}/.ssh/id_ed25519" ];
+    secrets = {
+      anthropic-key.file = ../secrets/anthropic-key.age;
+      aws-config.file = ../secrets/aws-config.age;
+      "openvpn-infillion.ovpn.age".file = ../secrets/openvpn-infillion.ovpn.age;
+    };
+  };
 
   # Import CLI tool configs
   imports = [

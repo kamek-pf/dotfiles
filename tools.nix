@@ -50,7 +50,7 @@ in {
     };
 
   # Define standalone HomeManager configurations, for non-NixOS machines
-  homeManagerConfig = hm: stateVersion: machineSettings:
+  homeManagerConfig = hm: agenix: stateVersion: machineSettings:
     let
       # Merge settings
       hmSettings = machineSettings // { isNixOS = false; };
@@ -64,6 +64,7 @@ in {
       # Define list of modules
       modules = [
         { home = homeModule; }
+        agenix.homeManagerModules.default
         ./modules/common.nix
       ];
     in

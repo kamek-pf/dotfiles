@@ -23,8 +23,7 @@
       # Pass a hostname to define new NixOS machines
       nixosMachine = tools.nixosMachine system nixpkgs agenix home-manager { };
       # Pass a state version and settings record to define Home Manager configs
-      linuxMachine = tools.homeManagerConfig home-manager;
-
+      linuxMachine = tools.homeManagerConfig home-manager agenix;
     in
     {
       devShells.${system}.default = pkgs.mkShell {
