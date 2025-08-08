@@ -1,9 +1,8 @@
 { settings, ... }:
 let
   secretsFile = import ../secrets/secrets.nix;
-  # Can you split on ".age" and take the left part AI!
   secretNames = builtins.map
-    (name: builtins.substring 0 (builtins.stringLength name - 4) name)
+    (name: builtins.elemAt (builtins.split "\\.age" name) 0)
     (builtins.attrNames secretsFile);
 
   makeSecrets = builtins.foldl' doMerge { };
